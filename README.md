@@ -11,3 +11,6 @@
 8. **String**
 9. **Bit Manipulation**
 10. **Classes**
+11. **Recursion**
+12. **Divide and conquer** (sorting)
+13. **Backtracking**
