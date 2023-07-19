@@ -12,5 +12,8 @@
 9. **Bit Manipulation**
 10. **Classes**
 11. **Recursion**
-12. **Divide and conquer** (sorting)
-13. **Backtracking**
+12. **Time and Space Complexity**
+13. **Divide and conquer** (sorting)
+14. **Backtracking**
+15. **Array List**
+16. **Linked List**
