@@ -94,5 +94,6 @@ public class RemoveInLinkedList {
         linkedList.print();
         linkedList.removeLast();
         linkedList.print();
+        System.out.println(linkedList.size);
     }
 }
