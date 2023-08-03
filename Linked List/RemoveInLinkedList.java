@@ -41,7 +41,7 @@ public class RemoveInLinkedList {
     public int removeFirst(){
         if(size==0)
         {
-            System.out.println("Linked List is empty");
+            System.out.println("Linked head is empty");
             return Integer.MIN_VALUE;
         }
         else if(size==1){
@@ -54,46 +54,59 @@ public class RemoveInLinkedList {
             head = head.next;
             size--;
             return val;
-        
     }
 
     public int removeLast(){
-        if(size==0)
-        {
-            System.out.println("Linked List is empty");
-            return Integer.MIN_VALUE;
-        }
-        else if(size==1){
-            int val = head.data;
-            head = tail = null;
-            size = 0;
+        if(head == null || head.next == null){
+             int val = head.data;
+            head = null;
             return val;
         }
-        
-        Node prev = head;
-        for(int i=0; i<size-2; i++) {
-            prev = prev.next;
-          }
 
-          int val = prev.next.data; //tail.data
-          prev.next = null;
-          tail = prev;
-          size--;
-          return val; 
+        Node temp = head;
+         int val = head.data;
+        while(temp.next.next != null){
+                temp = temp.next;
+        }
+        temp.next = null;
+        return val; 
     }
 
-    public static void main(String[] args) {
-        RemoveInLinkedList linkedList = new RemoveInLinkedList();
+    // //another way 
+    // public int deleteLastNode() {
+    //     if (head == null) {
+    //     int val = head.data;
+    //         return val;
+    //     } else if (head == tail) {
+    //         // Only one node in the list
+    //         head = null;
+    //         tail = null;
+    //     } else {
+    //                 int val = head.data;
+    //         Node current = head;
+    //         while (current.next != tail) {
+    //             current = current.next;
+    //         }
 
-        linkedList.addLast(1);
-        linkedList.addLast(2);
-        linkedList.addLast(3);
-        linkedList.addLast(4);
-        linkedList.print();
-        linkedList.removeFirst();
-        linkedList.print();
-        linkedList.removeLast();
-        linkedList.print();
-        System.out.println(linkedList.size);
+    //         current.next = null; // Delete the last node
+    //         tail = current; // Update the tail reference
+        
+    //        return val; 
+    // }
+    
+
+    public static void main(String[] args) {
+        RemoveInLinkedList linkedhead = new RemoveInLinkedList();
+
+        linkedhead.addLast(1);
+        linkedhead.addLast(2);
+        linkedhead.addLast(3);
+        linkedhead.addLast(4);
+        linkedhead.print();
+        linkedhead.removeFirst();
+        linkedhead.print();
+        linkedhead.removeLast();
+        linkedhead.print();
+        System.out.println(linkedhead.size);
     }
 }
