@@ -10,6 +10,22 @@ public class PushAtBottom {
         pushAtBottom(s,data);
         s.push(top);
     }
+
+    // public Stack<Integer> insertAtBottom(Stack<Integer> St, int X) {
+        
+    //     //base case 
+    //     if(St.isEmpty()){
+    //         St.push(X);
+    //         return St;
+    //     }
+    //     int top = St.peek();
+    //     St.pop();
+    //     //recursion
+    //     Stack<Integer> modifiedStack = insertAtBottom(St , X);
+    //     modifiedStack.push(top);
+    //     return modifiedStack;
+        
+    // }
    public static void main(String[] args) {
     Stack<Integer> s = new Stack<>();
     s.push(1);
