@@ -17,3 +17,6 @@
 14. **Backtracking**
 15. **Array List**
 16. **Linked List**
+17. **Stack**
+18. **Queue**
+19. **Binary Tree**
