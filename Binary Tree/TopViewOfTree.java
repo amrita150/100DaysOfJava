@@ -14,66 +14,64 @@ public class TopViewOfTree {
 
     static class QueueInfo {
         Node node;
-        int hd;
+        int horiDiam;
 
-        public QueueInfo(Node node, int hd) {
+        QueueInfo(Node node, int horiDiam) {
             this.node = node;
-            this.hd = hd;
+            this.horiDiam = horiDiam;
         }
     }
 
-    public static void topView(Node root){
-        if(root == null) {
+    public static void topView(Node root) {
+        if (root == null) {
             return;
         }
-        Map<Integer, Integer> map = new HashMap<>();
+        // We do level order traversal
         Queue<QueueInfo> q = new LinkedList<>();
+        HashMap<Integer, Node> map = new HashMap<>();
+        int max = 0, min = 0;
         q.add(new QueueInfo(root, 0));
         q.add(null);
-        int min = 0, max = 0;
 
-        while(!q.isEmpty()) {
+        while (!q.isEmpty()) {
             QueueInfo curr = q.remove();
-            if(curr == null) {
-                if(q.isEmpty()) {
+            if (curr == null) {
+                if (q.isEmpty()) {
                     break;
                 } else {
                     q.add(null);
                 }
             } else {
-
-                //check if HD is encountered for 1st time
-                if(!map.containsKey(curr.hd)) {
-                    map.put(curr.hd, curr.node.data);
+                if (!map.containsKey(curr.horiDiam)) {
+                    map.put(curr.horiDiam, curr.node);
                 }
 
-                if(curr.node.left != null) {
-                    q.add(new QueueInfo(curr.node.left, curr.hd-1));
-                    min = Math.min(min, curr.hd-1);
+                if (curr.node.left != null) {
+                    q.add(new QueueInfo(curr.node.left, curr.horiDiam - 1));
+                    min = Math.min(min, curr.horiDiam - 1);
                 }
 
-                if(curr.node.right != null) {
-                    q.add(new QueueInfo(curr.node.right, curr.hd+1));
-                    max = Math.max(max, curr.hd+1);
+                if (curr.node.right != null) {
+                    q.add(new QueueInfo(curr.node.right, curr.horiDiam + 1));
+                    max = Math.max(max, curr.horiDiam + 1);
                 }
             }
         }
-
-        for(int i=min; i<=max; i++) {
-            System.out.print(map.get(i)+" ");
+        for (int i = min; i <= max; i++) {
+            System.out.print(map.get(i).data + " ");
         }
         System.out.println();
     }
 
     public static void main(String args[]) {
         /*
-                    1
-                   / \
-                  2   3
-                 / \ / \
-                4  5 6  7  
+            1
+           / \
+          2   3
+         / \ / \
+        4  5 6  7  
 
-                expected output : 4 2 1 3 7
+        expected output : 4 2 1 3 7
         */
         Node root = new Node(1);
         root.left = new Node(2);
@@ -84,17 +82,17 @@ public class TopViewOfTree {
         root.right.right = new Node(7);
 
         /*
-                    1
-                   / \
-                  2   3
-                   \ 
-                    4  
-                     \
-                      5
-                       \
-                        6 
+            1
+           / \
+          2   3
+           \ 
+            4  
+             \
+              5
+               \
+                6 
 
-                expected output : 2 1 3 6
+        expected output : 2 1 3 6
         */
         Node root2 = new Node(1);
         root2.left = new Node(2);
@@ -103,7 +101,6 @@ public class TopViewOfTree {
         root2.left.right.right = new Node(5);
         root2.left.right.right.right = new Node(6);
 
-    
         topView(root);
         topView(root2);
     }
