@@ -11,7 +11,7 @@ public class LastOccurence {
             } else if (arr[mid] > target) {
                 right = mid - 1;
             } else {
-                if (mid == 0 || arr[mid] != arr[mid + 1]) {
+                if (mid == arr.length -1 || arr[mid] != arr[mid + 1]) {
                     return mid;
                 } else {
                     left = mid + 1;
