@@ -1,69 +1,28 @@
-import java.util.*;
-
-class BinarySearch{
+public class BinarySearch {
     
-    public static int binarySearch(int arr[] , int key) {
-        int n = arr.length;
-        int start = 0; 
-       int end = n-1;
-       
-       while(start<=end)
-       {
-        int mid = (start+end)/2;
-        if(arr[mid] > key)
-        {
-            end = mid-1;
+    public static boolean binarySearch(int arr[] , int target){
+        int left = 0;
+        int right = arr.length - 1;
+        while(left <= right){
+        int mid = left + (right - left)/2;
+            if(arr[mid]==target){
+                return true;
+            } else if(arr[mid] < target){
+                left = mid + 1;
+            } else{
+                right = mid - 1;
+            }
         }
-
-        else if(arr[mid] < key)
-        {
-            start = mid + 1;
-        }
-
-        else {
-                 return mid;
-             }
-       }
-
-       return -1;
-
-       
-    
-        
+        return false;
     }
-
-
-    public static void main(String args[]) {
-
-        System.out.println("Enter elements of an array:  ");
-        int arr[] = new int[10];
-
-        Scanner sc = new Scanner(System.in);
-
-        for(int i = 0 ; i<arr.length ; i++)
-        {
-             arr[i]= sc.nextInt();
-        } 
-        
-
-        // Sort the array (assuming it's not already sorted)
-        Arrays.sort(arr); 
-        
-        System.out.println("Enter element ypu want to find : ");
-        int key = sc.nextInt();
-
-
-
-      int index =  binarySearch(arr, key);
-
-        if (index != -1) {
-            System.out.println("Index is: " + index);
-        } else {
-            System.out.println("Key not found in the array.");
-        }
-
-        sc.close();
-
-        
+    
+    public static void main(String[] args) {
+        int arr[] = {1,2,3,6,12,34,43};
+        int target = 3;
+        if(binarySearch(arr , target)){
+            System.out.println("present");
+        } else{
+            System.out.println("not-present");            
+        }   
     }
 }
